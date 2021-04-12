@@ -87,7 +87,7 @@ public class TestLinkedList {
     }
 
     @Test
-    public void Given3Numbers_WhenSearch_AnyNumber_InLinkedList() {
+    public void given3NumbersWhenSearchAnyNumberInLinkedListReturnTrue() {
         Node<Integer> firstNode = new Node<>(56);
         Node<Integer> secondNode = new Node<>(30);
         Node<Integer> thirdNode = new Node<>(70);
@@ -97,5 +97,23 @@ public class TestLinkedList {
         linkedList.append(thirdNode);
         boolean result = linkedList.search(30);
         Assertions.assertTrue(result);
+        linkedList.printNode();
+    }
+
+    @Test
+    public void given3NumbersWhenSearchAnyNumberAndShouldInsertInLinkedListReturnTrue() {
+        Node<Integer> firstNode = new Node<>(56);
+        Node<Integer> secondNode = new Node<>(30);
+        Node<Integer> thirdNode = new Node<>(70);
+        Node<Integer> newNode = new Node<>(40);
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.add(firstNode);
+        linkedList.append(secondNode);
+        linkedList.append(thirdNode);
+        linkedList.searchInsert(30, newNode);
+        boolean result = linkedList.head.getNextNode().equals(secondNode) &&
+                         secondNode.getNextNode().equals(newNode);
+        Assertions.assertTrue(result);
+        linkedList.printNode();
     }
 }
