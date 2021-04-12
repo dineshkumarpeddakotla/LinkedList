@@ -15,6 +15,7 @@ public class TestLinkedList {
         linkedList.add(secondNode);
         linkedList.add(thirdNode);
         linkedList.printNode();
+
         boolean result = linkedList.head.equals(thirdNode) &&
                          linkedList.head.getNextNode().equals(secondNode) &&
                          linkedList.tail.equals(firstNode);
@@ -28,9 +29,10 @@ public class TestLinkedList {
         Node<Integer> secondNode = new Node<>(30);
         Node<Integer> thirdNode = new Node<>(70);
         LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.append(firstNode);
+        linkedList.add(firstNode);
         linkedList.append(secondNode);
         linkedList.append(thirdNode);
+
         boolean result = linkedList.head.equals(firstNode) &&
                          linkedList.head.getNextNode().equals(secondNode) &&
                          linkedList.tail.equals(thirdNode);
@@ -47,6 +49,7 @@ public class TestLinkedList {
         linkedList.add(firstNode);
         linkedList.append(thirdNode);
         linkedList.insert(firstNode,secondNode);
+
         boolean result = linkedList.head.equals(firstNode) &&
                          linkedList.head.getNextNode().equals(secondNode) &&
                          linkedList.tail.equals(thirdNode);
@@ -64,6 +67,7 @@ public class TestLinkedList {
         linkedList.append(thirdNode);
         linkedList.insert(firstNode,secondNode);
         linkedList.pop();
+
         boolean result = linkedList.head.equals(secondNode) &&
                          linkedList.tail.equals(thirdNode);
         Assertions.assertTrue(result);
@@ -80,6 +84,7 @@ public class TestLinkedList {
         linkedList.append(thirdNode);
         linkedList.insert(firstNode,secondNode);
         linkedList.popLast();
+
         boolean result = linkedList.head.equals(firstNode) &&
                          linkedList.tail.equals(secondNode);
         Assertions.assertTrue(result);
@@ -111,9 +116,31 @@ public class TestLinkedList {
         linkedList.append(secondNode);
         linkedList.append(thirdNode);
         linkedList.searchInsert(30, newNode);
+
         boolean result = linkedList.head.getNextNode().equals(secondNode) &&
                          secondNode.getNextNode().equals(newNode);
         Assertions.assertTrue(result);
         linkedList.printNode();
+    }
+
+    @Test
+    public void given3NumbersWhenSearchKeyAndDeleteAndDisplaySizeOfLinkedListReturnTrue() {
+        Node<Integer> firstNode = new Node<>(56);
+        Node<Integer> secondNode = new Node<>(30);
+        Node<Integer> thirdNode = new Node<>(70);
+        Node<Integer> newNode = new Node<>(40);
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.add(firstNode);
+        linkedList.append(secondNode);
+        linkedList.append(thirdNode);
+        linkedList.searchInsert(30, newNode);
+        linkedList.searchDelete(40);
+        linkedList.printNode();
+
+        System.out.println("Size of a Linked List" + linkedList.size());
+
+        boolean result = linkedList.head.getNextNode().equals(secondNode) &&
+                      secondNode.getNextNode().equals(thirdNode);
+        Assertions.assertTrue(result);
     }
 }
