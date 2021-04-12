@@ -40,6 +40,12 @@ public class LinkedList<K> {
         newNode.setNextNode(tempNode);
     }
 
+    public INode<K> pop(){
+        INode<K> tempNode = this.head;
+        this.head = head.getNextNode();
+        return tempNode;
+    }
+
     public void printNode(){
         System.out.println("My Nodes: " +head);
     }
