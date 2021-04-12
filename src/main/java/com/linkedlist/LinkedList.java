@@ -46,7 +46,25 @@ public class LinkedList<K> {
         return tempNode;
     }
 
+    public INode<K> popLast() {
+        INode<K> tempNode = head;
+        while (!tempNode.getNextNode().equals(tail)) {
+            tempNode = tempNode.getNextNode();
+        }
+        this.tail = tempNode;
+        tempNode = tempNode.getNextNode();
+        return tempNode;
+    }
+
     public void printNode(){
-        System.out.println("My Nodes: " +head);
+        StringBuffer nodes = new StringBuffer("My Nodes: ");
+        INode<K> tempNode = head;
+        while (tempNode.getNextNode() != null){
+            nodes.append(tempNode.getKey());
+            if(!tempNode.equals(tail)) nodes.append("-->");
+            tempNode = tempNode.getNextNode();
+        }
+        nodes.append(tempNode.getKey());
+        System.out.println(nodes);
     }
 }
