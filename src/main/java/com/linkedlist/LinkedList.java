@@ -10,14 +10,27 @@ public class LinkedList<K> {
     }
 
     public void add(INode<K> node) {
-        if(this.tail == null)
+        if(this.tail == null) {
             this.tail = node;
-        if (this.head == null)
+        }
+        if (this.head == null) {
             this.head = node;
-        else{
+        } else {
             INode<K> tempNode = this.head;
             this.head = node;
             this.head.setNextNode(tempNode);
+        }
+    }
+
+    public void append(INode<K> newNode){
+        if (tail == null) {
+            this.tail = newNode;
+        }
+        if (head == null) {
+            this.head = newNode;
+        } else {
+            this.tail.setNextNode(newNode);
+            this.tail = newNode;
         }
     }
 
